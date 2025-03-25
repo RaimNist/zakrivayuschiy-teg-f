@@ -195,7 +195,7 @@
 }
 
 .card__like-button {
-  padding: 8px 35px;
+  min-inline-size: 130px;
 }
 
 .button__text {
@@ -337,6 +337,7 @@
 }
 
 .like-icon.is-liked .heart {
+  transform-origin: center center;
   animation: heart-size .3s ease-in .1s;
 }
 
