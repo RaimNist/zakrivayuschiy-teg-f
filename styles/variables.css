@@ -9,7 +9,8 @@
     --header-title: clamp(0.875rem, 0.6769366197183099rem + 0.8450704225352111vw, 1.4375rem);
     --header-block-padding: clamp(7.5rem, 7.324rem + 0.75vw, 8rem);
     --header-inline-padding: clamp(0.875rem, -1.469rem + 10vw, 7.531rem);
-    --background: repeating-linear-gradient(to right, #d3d3d3, #d3d3d3 2px, rgb(0, 0, 0, 0) 2px, rgb(0, 0, 0, 0) 4px), repeating-linear-gradient(to bottom, #d3d3d3, #d3d3d3 2px, rgb(0, 0, 0, 0) 2px, rgb(0, 0, 0, 0) 4px), linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+    --gradient: repeating-linear-gradient(to right, #d3d3d3, #d3d3d3 2px, rgb(0, 0, 0, 0) 2px, rgb(0, 0, 0, 0) 4px), repeating-linear-gradient(to bottom, #d3d3d3, #d3d3d3 2px, rgb(0, 0, 0, 0) 2px, rgb(0, 0, 0, 0) 4px), linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
     --contour: #000;
     --heart-fill: #ff0000;
+    --background: #fff;
 }

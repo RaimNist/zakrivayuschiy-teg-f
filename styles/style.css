@@ -39,14 +39,17 @@
   align-items: center;
   flex-direction: column;
   gap: 100px;
-  background-image: var(--background);
+  background-image: var(--gradient, 
+    repeating-linear-gradient(to right, #d3d3d3, #d3d3d3 2px, rgb(0, 0, 0, 0) 2px, rgb(0, 0, 0, 0) 4px), 
+    repeating-linear-gradient(to bottom, #d3d3d3, #d3d3d3 2px, rgb(0, 0, 0, 0) 2px, rgb(0, 0, 0, 0) 4px), 
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a));
   background-size: cover;
   background-attachment: fixed;
 }
 
 .header {
-  background-color: #fff;
-  border: 2px solid #000;
+  background-color: var(--background, #fff);
+  border: 2px solid var(--contour, #000);
   padding: var(--header-block-padding, 128px) var(--header-inline-padding, 120.5px);
   font-family: var(--accent-font, --main-font), sans-serif;
   margin-top: 100px;
@@ -77,8 +80,8 @@
 
 .card {
   max-inline-size: var(--content-width, 700px);
-  background-color: #fff;
-  border: 2px solid #000;
+  background-color: var(--background, #fff);
+  border: 2px solid var(--contour, #000);
   overflow: hidden;
 }
 
@@ -123,13 +126,13 @@
 }
 
 .image-beauties {
-  filter: invert(1);
+  filter: invert(1) brightness(.5);
 }
 
 .card__label {
   text-transform: uppercase;
   text-shadow: -1px 0  rgb(255, 255, 255, .5), 0 1px  rgb(255, 255, 255, .5), 1px 0  rgb(255, 255, 255, .5), 0 -1px  rgb(255, 255, 255, .5);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), sans-serif;
   position: absolute;
   top: 27px;
   right: 27px;
@@ -137,10 +140,10 @@
   mix-blend-mode: hard-light;
 }
 
-@supports((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
+@supports((text-stroke: 1px var(--background, #fff)) or (-webkit-text-stroke: 1px var(--background, #fff))) {
   .card__label {
     -webkit-text-stroke: 1px rgb(255, 255, 255, .5);
-    text-stroke: 1px #fff;
+    text-stroke: 1px var(--background, #fff);
     text-shadow: none;
   }
 } 
@@ -161,8 +164,8 @@
 }
 
 .button {
-  background-color: #fff;
-  border: 2px solid #000;
+  background-color: var(--background, #fff);
+  border: 2px solid var(--contour, #000);
   position: relative;
   overflow: hidden;
 }
@@ -173,7 +176,7 @@
   min-width: 100%;
   min-height: 100%;
   inset: 0;
-  background-color: #000;
+  background-color: var(--contour, #000);
   transform: translate(-100%);
   transition: transform .5s ease-in-out;
 }
@@ -183,14 +186,14 @@
 }
 
 .button:focus-visible:not(.card__icon-button) {
-  box-shadow: 2px 2px 0 0 #000;
+  box-shadow: 2px 2px 0 0 var(--contour, #000);
   transition: box-shadow .5s;
 }
 
 .button:hover:not(.card__icon-button)::before {
   content: '';
   position: absolute;
-  background-color: #000;
+  background-color: var(--contour, #000);
   transform: translate(0);
   transition: transform .5s ease-in-out;
 }
@@ -203,7 +206,7 @@
 }
 
 .card__icon-button:focus-visible {
-  border: 2px solid #000;
+  border: 2px solid var(--contour, #000);
   transition: border 0.3s ease;
 }
 
@@ -216,11 +219,11 @@
 }
 
 .button__text {
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), sans-serif;
   font-size: 14px;
   line-height: .9em;
   position: relative;
-  color: #fff;
+  color: var(--background, #fff);
   mix-blend-mode: difference;
 }
 
@@ -231,7 +234,6 @@
   gap: 8px;
   align-items: center;
   justify-content: center;
-  margin-block-end: 100px;
 }
 
 .button-save__image {
@@ -244,8 +246,8 @@
 
 .dialog {
   padding: 30px;
-  border: 2px solid #000;
-  font-family: var(--accent-font);
+  border: 2px solid var(--contour, #000);
+  font-family: var(--accent-font), sans-serif;
   font-size: 14px;
   text-transform: uppercase;
 }
@@ -265,7 +267,7 @@
   inline-size: 39px;
   grid-row: 1 / 2;
   grid-column: 1 / 2;
-  fill: #000;
+  fill: var(--contour, #000);
   mix-blend-mode: difference;
 }
 
@@ -310,51 +312,51 @@
 }
 
 .card__icon-button:hover .core {
-  stroke: var(--contour);
-  fill: var(--contour);
+  stroke: var(--contour, #000);
+  fill: var(--contour, #000);
   transition: fill .3s;
   transition: stroke .33s;
 }
 
 .card__icon-button:hover .main-body {
-  fill: var(--contour);
+  fill: var(--contour, #000);
   transition: .3s;
   transition-delay: .03s;
 }
 
 .card__icon-button:active .core {
-  stroke: var(--heart-fill);
-  fill: var(--heart-fill);
+  stroke: var(--heart-fill, #ff0000);
+  fill: var(--heart-fill, #ff0000);
   transition: fill .3s;
   transition: stroke .33s;
 }
 
 .card__icon-button:active .main-body {
-  fill: var(--heart-fill);
+  fill: var(--heart-fill, #ff0000);
   transition: .3s;
   transition-delay: .03s;
 }
 
 .like-icon.is-liked .core {
-  stroke: var(--heart-fill);
-  fill: var(--heart-fill);
+  stroke: var(--heart-fill, #ff0000);
+  fill: var(--heart-fill, #ff0000);
   transition: fill .3s;
   transition: stroke .33s;
 }
 
 .like-icon.is-liked .main-body {
-  fill: var(--heart-fill);
+  fill: var(--heart-fill, #ff0000);
   transition: .3s;
   transition-delay: .03s;
 }
 
 .like-icon.is-liked .contour {
-  fill: var(--heart-fill);
+  fill: var(--heart-fill, #ff0000);
   transition: .3s;
   transition-delay: .06s;
 }
 
-.like-icon.is-liked .heart{
+.like-icon.is-liked .heart {
   animation: heart-size .3s ease-in .1s;
 }
 
@@ -393,5 +395,4 @@
   .dialog__title {
     max-inline-size: 220px;
   }
-
 }
